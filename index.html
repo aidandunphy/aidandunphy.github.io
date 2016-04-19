@@ -42,45 +42,35 @@
     </div>
     <script>
     
+    <script>
       function saveOptions() {
         var options = {
-          'url': $("#url").val(),
-          'username': $("#username").val(),
           'hash': $("#hash").val()
         }
         return options;
       }
-
-      $().ready(function() {
-        var hash = getURLVariable('hash');
-        hash = decodeURI(hash);
-        if (hash) {
-          $('#hash').html(hash);
+      $(document).ready(function() {
+        var priorHash = getURLVariable('hash');
+        priorHash = decodeURI(priorHash);
+        if (priorHash) {
+          $('#hash').html(priorHash);
         }
-
         $("#b-cancel").click(function() {
-          console.log("Cancel");
           document.location = "pebblejs://close";
         });
-
         $("#b-submit").click(function() {
-          console.log("Submit");
-
           var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions()));
-          console.log("Return location: " + location);
           document.location = location;
         });
       });
-
       function getURLVariable(name) {
         name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
         var regexS = "[\\?&]"+name+"=([^&#]*)",
-          regex = new RegExp(regexS),
-          results = regex.exec(window.location.href);
+            regex = new RegExp(regexS),
+            results = regex.exec(window.location.href);
         if (results == null) return "";
         else return results[1];
       }
-
     </script>
   </body>
 </html>
