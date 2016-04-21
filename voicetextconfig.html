@@ -39,21 +39,37 @@
         </div>
       </div>
     </div>
+    
     <script>
       function saveOptions() {
         var options = {
+          'url': $("#url").val(),
+          'username': $("#username").val(),          
           'hash': $("#hash").val()
         }
         return options;
       }
       
       $(document).ready(function() {
+
+        var priorUrl = getURLVariable('url');
+        priorUrl = decodeURI(priorUrl);
+        if (priorUrl) {
+          $('#url').val(priorUrl);
+        }
+
+        var priorUsername = getURLVariable('username');
+        priorUsername = decodeURI(priorUsername);
+        if (priorUsername) {
+          $('#username').val(priorUsername);
+        }
+
         var priorHash = getURLVariable('hash');
         priorHash = decodeURI(priorHash);
-
         if (priorHash) {
           $('#hash').val(priorHash);
         }
+
         $("#b-cancel").click(function() {
           document.location = "pebblejs://close";
         });
