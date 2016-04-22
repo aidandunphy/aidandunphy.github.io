@@ -16,8 +16,8 @@
 
       <div data-role="content">
         <div data-role="fieldcontain">
-          <label for="url">Gateway URL:</label>
-          <input type="text" name="url" id="url"></input>
+          <label for="stem">Gateway URL stem:</label>
+          <input type="text" name="stem" id="stem"></input>
         </div>
 
         <div data-role="fieldcontain">
@@ -43,7 +43,7 @@
     <script>
       function saveOptions() {
         var options = {
-          'url': $("#url").val(),
+          'stem': $("#stem").val(),
           'username': $("#username").val(),          
           'hash': $("#hash").val()
         }
@@ -52,10 +52,10 @@
       
       $(document).ready(function() {
 
-        var priorUrl = getURLVariable('url');
-        priorUrl = decodeURI(priorUrl);
-        if (priorUrl) {
-          $('#url').val(priorUrl);
+        var priorStem = getURLVariable('stem');
+        priorStem = decodeURI(priorStem);
+        if (priorStem) {
+          $('#Stem').val(priorStem);
         }
 
         var priorUsername = getURLVariable('username');
