@@ -30,6 +30,11 @@
           <input type="text" name="hash" id="hash"></input>
         </div>
 
+        <div data-role="fieldcontain">
+          <label for="hash">Sender's name</label>
+          <input type="text" name="sender" id="sender"></input>
+        </div>
+
         <div class="ui-body ui-body-b">
           <fieldset class="ui-grid-a">
               <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">Cancel</button></div>
@@ -46,6 +51,7 @@
           'stem': $("#stem").val(),
           'username': $("#username").val(),          
           'hash': $("#hash").val()
+          'sender': $("#sender").val(),          
         }
         return options;
       }
@@ -68,6 +74,12 @@
         priorHash = decodeURI(priorHash);
         if (priorHash) {
           $('#hash').val(priorHash);
+        }
+
+        var priorSender = getURLVariable('sender');
+        priorSender = decodeURI(priorSender);
+        if (priorSender) {
+          $('#sender').val(priorSender);
         }
 
         $("#b-cancel").click(function() {
